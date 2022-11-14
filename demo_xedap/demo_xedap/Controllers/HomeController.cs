@@ -48,5 +48,16 @@ namespace demo_xedap.Controllers
             List<tCategory> lstCategorys = _db.tCategories.ToList();
             return PartialView(lstCategorys);
         }
+        
+        public PartialViewResult SubstancePartial()
+        {
+            List<tSubstance> lstSubstances = _db.tSubstances.ToList();
+            return PartialView(lstSubstances);
+        }
+        public PartialViewResult CountryPartial()
+        {
+            List<tCountry> lstCountrys = _db.tCountries.ToList();
+            return PartialView(lstCountrys);
+        }
     }
 }
