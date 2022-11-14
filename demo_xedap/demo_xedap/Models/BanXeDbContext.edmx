@@ -1,0 +1,696 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBWebBanXeDapModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tCategory">
+          <Key>
+            <PropertyRef Name="MaLoai" />
+          </Key>
+          <Property Name="MaLoai" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenLoai" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tCountry">
+          <Key>
+            <PropertyRef Name="MaNuoc" />
+          </Key>
+          <Property Name="MaNuoc" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenNuoc" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tCustumers">
+          <Key>
+            <PropertyRef Name="CustumerID" />
+          </Key>
+          <Property Name="CustumerID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tMembership">
+          <Key>
+            <PropertyRef Name="MemberID" />
+          </Key>
+          <Property Name="MemberID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="SDT" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tOrder">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustumerID" Type="nvarchar" MaxLength="50" />
+          <Property Name="MemberID" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgayBan" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tOrder_detall">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prices" Type="float" />
+        </EntityType>
+        <EntityType Name="tProduct">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProducName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Color" Type="nvarchar" MaxLength="50" />
+          <Property Name="Weight" Type="float" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="Price" Type="float" />
+          <Property Name="MaLoai" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaChatLieu" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaNSX" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaAnh" Type="nvarchar" MaxLength="50" />
+          <Property Name="GioiThieu" Type="nvarchar(max)" />
+          <Property Name="Discount" Type="int" />
+          <Property Name="BaoHanh" Type="nvarchar" MaxLength="20" />
+          <Property Name="MaNuoc" Type="nvarchar" MaxLength="50" />
+          <Property Name="Anh" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tProduct_Img">
+          <Key>
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="TenFileAnh" />
+          </Key>
+          <Property Name="ProductID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenFileAnh" Type="char" MaxLength="100" Nullable="false" />
+          <Property Name="ViTri" Type="smallint" />
+        </EntityType>
+        <EntityType Name="tSubstance">
+          <Key>
+            <PropertyRef Name="MaChatLieu" />
+          </Key>
+          <Property Name="MaChatLieu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChatLieu" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tSuppliers">
+          <Key>
+            <PropertyRef Name="MaNSX" />
+          </Key>
+          <Property Name="MaNSX" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenNSX" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_tOrder_detall_tOrder">
+          <End Role="tOrder" Type="Self.tOrder" Multiplicity="1" />
+          <End Role="tOrder_detall" Type="Self.tOrder_detall" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tOrder">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="tOrder_detall">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tOrder_detall_tProduct">
+          <End Role="tProduct" Type="Self.tProduct" Multiplicity="0..1" />
+          <End Role="tOrder_detall" Type="Self.tOrder_detall" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tProduct">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="tOrder_detall">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tOrder_tCustumers">
+          <End Role="tCustumers" Type="Self.tCustumers" Multiplicity="0..1" />
+          <End Role="tOrder" Type="Self.tOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tCustumers">
+              <PropertyRef Name="CustumerID" />
+            </Principal>
+            <Dependent Role="tOrder">
+              <PropertyRef Name="CustumerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tOrder_tMembership">
+          <End Role="tMembership" Type="Self.tMembership" Multiplicity="0..1" />
+          <End Role="tOrder" Type="Self.tOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tMembership">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="tOrder">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tProduct_Img_tProDuct">
+          <End Role="tProduct" Type="Self.tProduct" Multiplicity="1" />
+          <End Role="tProduct_Img" Type="Self.tProduct_Img" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tProduct">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="tProduct_Img">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tProduct_tCategory">
+          <End Role="tCategory" Type="Self.tCategory" Multiplicity="0..1" />
+          <End Role="tProduct" Type="Self.tProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tCategory">
+              <PropertyRef Name="MaLoai" />
+            </Principal>
+            <Dependent Role="tProduct">
+              <PropertyRef Name="MaLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tProduct_tCountry">
+          <End Role="tCountry" Type="Self.tCountry" Multiplicity="0..1" />
+          <End Role="tProduct" Type="Self.tProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tCountry">
+              <PropertyRef Name="MaNuoc" />
+            </Principal>
+            <Dependent Role="tProduct">
+              <PropertyRef Name="MaNuoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tProduct_tSubstance">
+          <End Role="tSubstance" Type="Self.tSubstance" Multiplicity="0..1" />
+          <End Role="tProduct" Type="Self.tProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tSubstance">
+              <PropertyRef Name="MaChatLieu" />
+            </Principal>
+            <Dependent Role="tProduct">
+              <PropertyRef Name="MaChatLieu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tProduct_tSuppliers">
+          <End Role="tSuppliers" Type="Self.tSuppliers" Multiplicity="0..1" />
+          <End Role="tProduct" Type="Self.tProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tSuppliers">
+              <PropertyRef Name="MaNSX" />
+            </Principal>
+            <Dependent Role="tProduct">
+              <PropertyRef Name="MaNSX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBWebBanXeDapModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tCategory" EntityType="Self.tCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tCountry" EntityType="Self.tCountry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tCustumers" EntityType="Self.tCustumers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tMembership" EntityType="Self.tMembership" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tOrder" EntityType="Self.tOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tOrder_detall" EntityType="Self.tOrder_detall" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tProduct" EntityType="Self.tProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tProduct_Img" EntityType="Self.tProduct_Img" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tSubstance" EntityType="Self.tSubstance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tSuppliers" EntityType="Self.tSuppliers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tOrder_detall_tOrder" Association="Self.FK_tOrder_detall_tOrder">
+            <End Role="tOrder" EntitySet="tOrder" />
+            <End Role="tOrder_detall" EntitySet="tOrder_detall" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tOrder_detall_tProduct" Association="Self.FK_tOrder_detall_tProduct">
+            <End Role="tProduct" EntitySet="tProduct" />
+            <End Role="tOrder_detall" EntitySet="tOrder_detall" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tOrder_tCustumers" Association="Self.FK_tOrder_tCustumers">
+            <End Role="tCustumers" EntitySet="tCustumers" />
+            <End Role="tOrder" EntitySet="tOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tOrder_tMembership" Association="Self.FK_tOrder_tMembership">
+            <End Role="tMembership" EntitySet="tMembership" />
+            <End Role="tOrder" EntitySet="tOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tProduct_Img_tProDuct" Association="Self.FK_tProduct_Img_tProDuct">
+            <End Role="tProduct" EntitySet="tProduct" />
+            <End Role="tProduct_Img" EntitySet="tProduct_Img" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tProduct_tCategory" Association="Self.FK_tProduct_tCategory">
+            <End Role="tCategory" EntitySet="tCategory" />
+            <End Role="tProduct" EntitySet="tProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tProduct_tCountry" Association="Self.FK_tProduct_tCountry">
+            <End Role="tCountry" EntitySet="tCountry" />
+            <End Role="tProduct" EntitySet="tProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tProduct_tSubstance" Association="Self.FK_tProduct_tSubstance">
+            <End Role="tSubstance" EntitySet="tSubstance" />
+            <End Role="tProduct" EntitySet="tProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tProduct_tSuppliers" Association="Self.FK_tProduct_tSuppliers">
+            <End Role="tSuppliers" EntitySet="tSuppliers" />
+            <End Role="tProduct" EntitySet="tProduct" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBWebBanXeDapModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tCategory">
+          <Key>
+            <PropertyRef Name="MaLoai" />
+          </Key>
+          <Property Name="MaLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tProducts" Relationship="Self.FK_tProduct_tCategory" FromRole="tCategory" ToRole="tProduct" />
+        </EntityType>
+        <EntityType Name="tCountry">
+          <Key>
+            <PropertyRef Name="MaNuoc" />
+          </Key>
+          <Property Name="MaNuoc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenNuoc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tProducts" Relationship="Self.FK_tProduct_tCountry" FromRole="tCountry" ToRole="tProduct" />
+        </EntityType>
+        <EntityType Name="tCustumer">
+          <Key>
+            <PropertyRef Name="CustumerID" />
+          </Key>
+          <Property Name="CustumerID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tOrders" Relationship="Self.FK_tOrder_tCustumers" FromRole="tCustumers" ToRole="tOrder" />
+        </EntityType>
+        <EntityType Name="tMembership">
+          <Key>
+            <PropertyRef Name="MemberID" />
+          </Key>
+          <Property Name="MemberID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GioiTinh" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tOrders" Relationship="Self.FK_tOrder_tMembership" FromRole="tMembership" ToRole="tOrder" />
+        </EntityType>
+        <EntityType Name="tOrder">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CustumerID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MemberID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgayBan" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tCustumer" Relationship="Self.FK_tOrder_tCustumers" FromRole="tOrder" ToRole="tCustumers" />
+          <NavigationProperty Name="tMembership" Relationship="Self.FK_tOrder_tMembership" FromRole="tOrder" ToRole="tMembership" />
+          <NavigationProperty Name="tOrder_detall" Relationship="Self.FK_tOrder_detall_tOrder" FromRole="tOrder" ToRole="tOrder_detall" />
+        </EntityType>
+        <EntityType Name="tOrder_detall">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prices" Type="Double" />
+          <NavigationProperty Name="tOrder" Relationship="Self.FK_tOrder_detall_tOrder" FromRole="tOrder_detall" ToRole="tOrder" />
+          <NavigationProperty Name="tProduct" Relationship="Self.FK_tOrder_detall_tProduct" FromRole="tOrder_detall" ToRole="tProduct" />
+        </EntityType>
+        <EntityType Name="tProduct">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProducName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Weight" Type="Double" />
+          <Property Name="Amount" Type="Int32" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="MaLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaChatLieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaNSX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaAnh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GioiThieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Discount" Type="Int32" />
+          <Property Name="BaoHanh" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MaNuoc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Anh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tCategory" Relationship="Self.FK_tProduct_tCategory" FromRole="tProduct" ToRole="tCategory" />
+          <NavigationProperty Name="tCountry" Relationship="Self.FK_tProduct_tCountry" FromRole="tProduct" ToRole="tCountry" />
+          <NavigationProperty Name="tOrder_detall" Relationship="Self.FK_tOrder_detall_tProduct" FromRole="tProduct" ToRole="tOrder_detall" />
+          <NavigationProperty Name="tProduct_Img" Relationship="Self.FK_tProduct_Img_tProDuct" FromRole="tProduct" ToRole="tProduct_Img" />
+          <NavigationProperty Name="tSubstance" Relationship="Self.FK_tProduct_tSubstance" FromRole="tProduct" ToRole="tSubstance" />
+          <NavigationProperty Name="tSupplier" Relationship="Self.FK_tProduct_tSuppliers" FromRole="tProduct" ToRole="tSuppliers" />
+        </EntityType>
+        <EntityType Name="tProduct_Img">
+          <Key>
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="TenFileAnh" />
+          </Key>
+          <Property Name="ProductID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenFileAnh" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ViTri" Type="Int16" />
+          <NavigationProperty Name="tProduct" Relationship="Self.FK_tProduct_Img_tProDuct" FromRole="tProduct_Img" ToRole="tProduct" />
+        </EntityType>
+        <EntityType Name="tSubstance">
+          <Key>
+            <PropertyRef Name="MaChatLieu" />
+          </Key>
+          <Property Name="MaChatLieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ChatLieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tProducts" Relationship="Self.FK_tProduct_tSubstance" FromRole="tSubstance" ToRole="tProduct" />
+        </EntityType>
+        <EntityType Name="tSupplier">
+          <Key>
+            <PropertyRef Name="MaNSX" />
+          </Key>
+          <Property Name="MaNSX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenNSX" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="tProducts" Relationship="Self.FK_tProduct_tSuppliers" FromRole="tSuppliers" ToRole="tProduct" />
+        </EntityType>
+        <Association Name="FK_tProduct_tCategory">
+          <End Role="tCategory" Type="Self.tCategory" Multiplicity="0..1" />
+          <End Role="tProduct" Type="Self.tProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tCategory">
+              <PropertyRef Name="MaLoai" />
+            </Principal>
+            <Dependent Role="tProduct">
+              <PropertyRef Name="MaLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tProduct_tCountry">
+          <End Role="tCountry" Type="Self.tCountry" Multiplicity="0..1" />
+          <End Role="tProduct" Type="Self.tProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tCountry">
+              <PropertyRef Name="MaNuoc" />
+            </Principal>
+            <Dependent Role="tProduct">
+              <PropertyRef Name="MaNuoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tOrder_tCustumers">
+          <End Role="tCustumers" Type="Self.tCustumer" Multiplicity="0..1" />
+          <End Role="tOrder" Type="Self.tOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tCustumers">
+              <PropertyRef Name="CustumerID" />
+            </Principal>
+            <Dependent Role="tOrder">
+              <PropertyRef Name="CustumerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tOrder_tMembership">
+          <End Role="tMembership" Type="Self.tMembership" Multiplicity="0..1" />
+          <End Role="tOrder" Type="Self.tOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tMembership">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="tOrder">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tOrder_detall_tOrder">
+          <End Role="tOrder" Type="Self.tOrder" Multiplicity="1" />
+          <End Role="tOrder_detall" Type="Self.tOrder_detall" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tOrder">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="tOrder_detall">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tOrder_detall_tProduct">
+          <End Role="tProduct" Type="Self.tProduct" Multiplicity="0..1" />
+          <End Role="tOrder_detall" Type="Self.tOrder_detall" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tProduct">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="tOrder_detall">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tProduct_Img_tProDuct">
+          <End Role="tProduct" Type="Self.tProduct" Multiplicity="1" />
+          <End Role="tProduct_Img" Type="Self.tProduct_Img" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tProduct">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="tProduct_Img">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tProduct_tSubstance">
+          <End Role="tSubstance" Type="Self.tSubstance" Multiplicity="0..1" />
+          <End Role="tProduct" Type="Self.tProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tSubstance">
+              <PropertyRef Name="MaChatLieu" />
+            </Principal>
+            <Dependent Role="tProduct">
+              <PropertyRef Name="MaChatLieu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tProduct_tSuppliers">
+          <End Role="tSuppliers" Type="Self.tSupplier" Multiplicity="0..1" />
+          <End Role="tProduct" Type="Self.tProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tSuppliers">
+              <PropertyRef Name="MaNSX" />
+            </Principal>
+            <Dependent Role="tProduct">
+              <PropertyRef Name="MaNSX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBWebBanXeDapEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tCategories" EntityType="Self.tCategory" />
+          <EntitySet Name="tCountries" EntityType="Self.tCountry" />
+          <EntitySet Name="tCustumers" EntityType="Self.tCustumer" />
+          <EntitySet Name="tMemberships" EntityType="Self.tMembership" />
+          <EntitySet Name="tOrders" EntityType="Self.tOrder" />
+          <EntitySet Name="tOrder_detall" EntityType="Self.tOrder_detall" />
+          <EntitySet Name="tProducts" EntityType="Self.tProduct" />
+          <EntitySet Name="tProduct_Img" EntityType="Self.tProduct_Img" />
+          <EntitySet Name="tSubstances" EntityType="Self.tSubstance" />
+          <EntitySet Name="tSuppliers" EntityType="Self.tSupplier" />
+          <AssociationSet Name="FK_tProduct_tCategory" Association="Self.FK_tProduct_tCategory">
+            <End Role="tCategory" EntitySet="tCategories" />
+            <End Role="tProduct" EntitySet="tProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tProduct_tCountry" Association="Self.FK_tProduct_tCountry">
+            <End Role="tCountry" EntitySet="tCountries" />
+            <End Role="tProduct" EntitySet="tProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tOrder_tCustumers" Association="Self.FK_tOrder_tCustumers">
+            <End Role="tCustumers" EntitySet="tCustumers" />
+            <End Role="tOrder" EntitySet="tOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tOrder_tMembership" Association="Self.FK_tOrder_tMembership">
+            <End Role="tMembership" EntitySet="tMemberships" />
+            <End Role="tOrder" EntitySet="tOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tOrder_detall_tOrder" Association="Self.FK_tOrder_detall_tOrder">
+            <End Role="tOrder" EntitySet="tOrders" />
+            <End Role="tOrder_detall" EntitySet="tOrder_detall" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tOrder_detall_tProduct" Association="Self.FK_tOrder_detall_tProduct">
+            <End Role="tProduct" EntitySet="tProducts" />
+            <End Role="tOrder_detall" EntitySet="tOrder_detall" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tProduct_Img_tProDuct" Association="Self.FK_tProduct_Img_tProDuct">
+            <End Role="tProduct" EntitySet="tProducts" />
+            <End Role="tProduct_Img" EntitySet="tProduct_Img" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tProduct_tSubstance" Association="Self.FK_tProduct_tSubstance">
+            <End Role="tSubstance" EntitySet="tSubstances" />
+            <End Role="tProduct" EntitySet="tProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tProduct_tSuppliers" Association="Self.FK_tProduct_tSuppliers">
+            <End Role="tSuppliers" EntitySet="tSuppliers" />
+            <End Role="tProduct" EntitySet="tProducts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBWebBanXeDapModelStoreContainer" CdmEntityContainer="DBWebBanXeDapEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DBWebBanXeDapModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tCategories">
+            <EntityTypeMapping TypeName="DBWebBanXeDapModel.tCategory">
+              <MappingFragment StoreEntitySet="tCategory">
+                <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+                <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tCountries">
+            <EntityTypeMapping TypeName="DBWebBanXeDapModel.tCountry">
+              <MappingFragment StoreEntitySet="tCountry">
+                <ScalarProperty Name="MaNuoc" ColumnName="MaNuoc" />
+                <ScalarProperty Name="TenNuoc" ColumnName="TenNuoc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tCustumers">
+            <EntityTypeMapping TypeName="DBWebBanXeDapModel.tCustumer">
+              <MappingFragment StoreEntitySet="tCustumers">
+                <ScalarProperty Name="CustumerID" ColumnName="CustumerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tMemberships">
+            <EntityTypeMapping TypeName="DBWebBanXeDapModel.tMembership">
+              <MappingFragment StoreEntitySet="tMembership">
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tOrders">
+            <EntityTypeMapping TypeName="DBWebBanXeDapModel.tOrder">
+              <MappingFragment StoreEntitySet="tOrder">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="CustumerID" ColumnName="CustumerID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="NgayBan" ColumnName="NgayBan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tOrder_detall">
+            <EntityTypeMapping TypeName="DBWebBanXeDapModel.tOrder_detall">
+              <MappingFragment StoreEntitySet="tOrder_detall">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Prices" ColumnName="Prices" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tProducts">
+            <EntityTypeMapping TypeName="DBWebBanXeDapModel.tProduct">
+              <MappingFragment StoreEntitySet="tProduct">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProducName" ColumnName="ProducName" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+                <ScalarProperty Name="MaChatLieu" ColumnName="MaChatLieu" />
+                <ScalarProperty Name="MaNSX" ColumnName="MaNSX" />
+                <ScalarProperty Name="MaAnh" ColumnName="MaAnh" />
+                <ScalarProperty Name="GioiThieu" ColumnName="GioiThieu" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="BaoHanh" ColumnName="BaoHanh" />
+                <ScalarProperty Name="MaNuoc" ColumnName="MaNuoc" />
+                <ScalarProperty Name="Anh" ColumnName="Anh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tProduct_Img">
+            <EntityTypeMapping TypeName="DBWebBanXeDapModel.tProduct_Img">
+              <MappingFragment StoreEntitySet="tProduct_Img">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="TenFileAnh" ColumnName="TenFileAnh" />
+                <ScalarProperty Name="ViTri" ColumnName="ViTri" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tSubstances">
+            <EntityTypeMapping TypeName="DBWebBanXeDapModel.tSubstance">
+              <MappingFragment StoreEntitySet="tSubstance">
+                <ScalarProperty Name="MaChatLieu" ColumnName="MaChatLieu" />
+                <ScalarProperty Name="ChatLieu" ColumnName="ChatLieu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tSuppliers">
+            <EntityTypeMapping TypeName="DBWebBanXeDapModel.tSupplier">
+              <MappingFragment StoreEntitySet="tSuppliers">
+                <ScalarProperty Name="MaNSX" ColumnName="MaNSX" />
+                <ScalarProperty Name="TenNSX" ColumnName="TenNSX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

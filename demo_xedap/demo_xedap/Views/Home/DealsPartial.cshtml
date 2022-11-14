@@ -1,0 +1,28 @@
+﻿@using demo_xedap.Models
+@model List<tProduct>
+
+
+@{
+    int i = 0;
+    foreach (var item in Model)
+    {
+        i++;
+        if (i <= 9)
+        {
+            <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+                <div class="single-related-product d-flex">
+                    <a href="#"><img src="@Url.Content("/layoutAssets/Images/" + item.Anh)" alt="" width="80" class="rounded"></a>
+                    <div class="desc">
+                        <a href="@Url.Action("DetailPage", "Home", new {@MaSP = item.ProductID})" class="title">@item.ProducName</a>
+                        <div class="price">
+                            <h6>$@item.Price</h6>
+                            <h6 class="l-through"></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+}
+
+
