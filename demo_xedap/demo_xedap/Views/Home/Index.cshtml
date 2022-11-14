@@ -1,6 +1,12 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+@{
+    if (Session["userName"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
 @using demo_xedap.Models;
 @model List<tProduct>
 <div class="single-product-slider">
@@ -29,7 +35,7 @@
                         <!-- single product -->
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" style="height: 30vh"  src="@Url.Content("/layoutAssets/Images/" + item.Anh)" alt="">
+                                <img class="img-fluid" style="height: 30vh" src="@Url.Content("/layoutAssets/Images/" + item.Anh)" alt="">
                                 <div class="product-details">
                                     <h6>
                                         @item.ProducName
@@ -90,7 +96,7 @@
                 foreach (var item in Model)
                 {
                     a++;
-                    if (a <= 16 && a>=9)
+                    if (a <= 16 && a >= 9)
                     {
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
@@ -131,5 +137,5 @@
             }
         </div>
 
-        </div>
+    </div>
 </div>
