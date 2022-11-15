@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web.UI.WebControls;
+<!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
 <head>
@@ -73,7 +74,7 @@
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                    aria-expanded="false">Pages</a>
                                 <ul class="dropdown-menu">
-                                    
+
                                     <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Login")">Login</a></li>
                                     <li class="nav-item"><a class="nav-link" href="tracking.html">Tracking</a></li>
                                     <li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
@@ -91,15 +92,24 @@
                 </div>
             </nav>
         </div>
-        <div class="search_input" id="search_input_box">
-            <div class="container">
-                <form class="d-flex justify-content-between">
-                    <input type="text" class="form-control" id="search_input" placeholder="Search Here">
-                    <button type="submit" class="btn"></button>
-                    <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
-                </form>
+        @using (Html.BeginForm("SearchResults", "Home", FormMethod.Get))
+        {
+            <div class="search_input" id="search_input_box">
+                <div class="container">
+                    <form class="d-flex justify-content-between">
+                        @Html.TextBox("searchkey", "", htmlAttributes: new
+                            { @PlaceHolder = "Nhap san pham can tim " })
+                        @*<input type="text" class="form-control" id="search_input" placeholder="Search Here">*@
+                        <button type="submit" class="site-btn">SEARCH</button>
+                        <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
+                    </form>
+                </div>
             </div>
-        </div>
+        }
+
+
+
+
     </header>
     <!-- End Header Area -->
     <!-- start banner Area -->
@@ -125,7 +135,7 @@
                             </div>
                             <div class="col-lg-7">
                                 <div class="banner-img">
-                                    <img class="img-fluid" src="~/layoutAssets/img/banner/banner2.png" alt=""/>
+                                    <img class="img-fluid" src="~/layoutAssets/img/banner/banner2.png" alt="" />
                                 </div>
                             </div>
                         </div>

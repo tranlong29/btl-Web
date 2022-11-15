@@ -1,36 +1,35 @@
-﻿
-
+﻿@using System.Web.UI.WebControls;
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
 <head>
-	<!-- Mobile Specific Meta -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Favicon-->
-	<link rel="shortcut icon" href="~/layoutAssets/img/fav.png">
-	<!-- Author Meta -->
-	<meta name="author" content="CodePixar">
-	<!-- Meta Description -->
-	<meta name="description" content="">
-	<!-- Meta Keyword -->
-	<meta name="keywords" content="">
-	<!-- meta character set -->
-	<meta charset="UTF-8">
-	<!-- Site Title -->
-	<title>Karma Shop</title>
-	<!--
-			CSS
-			============================================= -->
-	<link rel="stylesheet" href="~/layoutAssets/css/linearicons.css">
-	<link rel="stylesheet" href="~/layoutAssets/css/font-awesome.min.css">
-	<link rel="stylesheet" href="~/layoutAssets/css/themify-icons.css">
-	<link rel="stylesheet" href="~/layoutAssets/css/bootstrap.css">
-	<link rel="stylesheet" href="~/layoutAssets/css/owl.carousel.css">
-	<link rel="stylesheet" href="~/layoutAssets/css/nice-select.css">
-	<link rel="stylesheet" href="~/layoutAssets/css/nouislider.min.css">
-	<link rel="stylesheet" href="~/layoutAssets/css/ion.rangeSlider.css" />
-	<link rel="stylesheet" href="~/layoutAssets/css/ion.rangeSlider.skinFlat.css" />
-	<link rel="stylesheet" href="~/layoutAssets/css/main.css">
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="~/layoutAssets/img/fav.png">
+    <!-- Author Meta -->
+    <meta name="author" content="CodePixar">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>Karma Shop</title>
+    <!--
+            CSS
+            ============================================= -->
+    <link rel="stylesheet" href="~/layoutAssets/css/linearicons.css">
+    <link rel="stylesheet" href="~/layoutAssets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/layoutAssets/css/themify-icons.css">
+    <link rel="stylesheet" href="~/layoutAssets/css/bootstrap.css">
+    <link rel="stylesheet" href="~/layoutAssets/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/layoutAssets/css/nice-select.css">
+    <link rel="stylesheet" href="~/layoutAssets/css/nouislider.min.css">
+    <link rel="stylesheet" href="~/layoutAssets/css/ion.rangeSlider.css" />
+    <link rel="stylesheet" href="~/layoutAssets/css/ion.rangeSlider.skinFlat.css" />
+    <link rel="stylesheet" href="~/layoutAssets/css/main.css">
 </head>
 
 <body>
@@ -91,15 +90,20 @@
                 </div>
             </nav>
         </div>
-        <div class="search_input" id="search_input_box">
-            <div class="container">
-                <form class="d-flex justify-content-between">
-                    <input type="text" class="form-control" id="search_input" placeholder="Search Here">
-                    <button type="submit" class="btn"></button>
-                    <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
-                </form>
+        @using (Html.BeginForm("SearchResults", "Home", FormMethod.Get))
+        {
+            <div class="search_input" id="search_input_box">
+                <div class="container">
+                    <form class="d-flex justify-content-between">
+                        @Html.TextBox("searchkey", "", htmlAttributes: new
+                            { @PlaceHolder = "Nhap san pham can tim " })
+                        @*<input type="text" class="form-control" id="search_input" placeholder="Search Here">*@
+                        <button type="submit" class="site-btn">SEARCH</button>
+                        <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
+                    </form>
+                </div>
             </div>
-        </div>
+        }
     </header>
     <!-- End Header Area -->
     <!-- Start Banner Area -->

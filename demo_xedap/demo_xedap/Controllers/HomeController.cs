@@ -59,5 +59,22 @@ namespace demo_xedap.Controllers
             List<tCountry> lstCountrys = _db.tCountries.ToList();
             return PartialView(lstCountrys);
         }
+
+        [HttpGet]
+        public ActionResult SearchResults(string searchkey, int? page)
+        {
+            ViewBag.searchkey = searchkey;
+            List<tProduct> lstSearchResults = _db.tProducts.Where(n => n.ProducName.Contains(searchkey)).ToList();
+            int pagesize = 12;//so sp tren mot trang
+            int pagenumber = (page ?? 1);//so trang
+            List<tProduct> lstProducts = _db.tProducts.ToList();
+            if (lstSearchResults.Count == 0)
+            {
+                ViewBag.ThongBao = "Khong tim thay san pham";
+                return View(_db.tProducts.ToList().ToPagedList(pagenumber, pagesize));
+            }
+            ViewBag.ThongBao = "da tim thay " + lstSearchResults.Count.ToString() + " san pham";
+            return View(lstSearchResults.OrderBy(n => n.ProducName).ToPagedList(pagenumber, pagesize));
+        }
     }
 }

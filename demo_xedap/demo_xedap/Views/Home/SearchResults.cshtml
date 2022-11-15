@@ -1,9 +1,8 @@
 ﻿
 @{
-    ViewBag.Title = "CategoryPage";
+    ViewBag.Title = "SearchResults";
     Layout = "~/Views/Shared/_Layoutdetail.cshtml";
 }
-
 
 @using demo_xedap.Models;
 @using PagedList.Mvc;
@@ -151,6 +150,7 @@
             <!-- End Filter Bar -->
             <!-- Start Best Seller -->
             <section class="lattest-product-area pb-40 category-list">
+                <h6>@ViewBag.ThongBao</h6>
                 <div class="row">
                     <!-- single product -->
                     @{
@@ -208,7 +208,8 @@
                     </select>
                 </div>
                 <div class="pagination">
-                    @Html.PagedListPager(Model, page => Url.Action("CategoryPage", new { page = page }))
+                    @Html.PagedListPager(Model, page => Url.Action("SearchResults", new { page = page, searchkey = ViewBag.searchkey }))
+                
                 </div>
             </div>
             <!-- End Filter Bar -->
