@@ -48,5 +48,10 @@ namespace WebBanVali.Controllers
             }
             return View(taikhoan1);
         }
+        public ActionResult Logout()
+        {
+            Session.Clear();//remove session
+            return RedirectToAction("Index");
+        }
     }
 }
