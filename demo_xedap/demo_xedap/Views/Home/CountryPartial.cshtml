@@ -1,0 +1,8 @@
+﻿@using demo_xedap.Models;
+@model List<tCountry>
+
+@foreach (var item in Model)
+{
+    <li><a href="@Url.Action("ProductsByCountry", "Home", new { @MaNuoc = item.MaNuoc })">@item.TenNuoc</a></li>
+}
+

@@ -13,10 +13,10 @@ namespace demo_xedap.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DBWebBanXeDap1Entities : DbContext
+    public partial class DBWebBanXeDap1Entities1 : DbContext
     {
-        public DBWebBanXeDap1Entities()
-            : base("name=DBWebBanXeDap1Entities")
+        public DBWebBanXeDap1Entities1()
+            : base("name=DBWebBanXeDap1Entities1")
         {
         }
     

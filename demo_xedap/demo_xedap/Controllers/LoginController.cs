@@ -5,21 +5,25 @@ using System.Web;
 using System.Web.Mvc;
 using demo_xedap.Models;
 using System.Data.Entity;
-
+using System.Diagnostics;
 
 namespace WebBanVali.Controllers
 {
     public class LoginController : Controller
     {
-        DBWebBanXeDap1Entities db = new DBWebBanXeDap1Entities();
+        DBWebBanXeDap1Entities1 db = new DBWebBanXeDap1Entities1();
         // GET: Login
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult DangNhap(tMembership user)
+        public ActionResult PageLogout()
         {
-            var user2 = db.tMemberships.Where(n => n.TaiKhoan.Equals(user.TaiKhoan) && n.MatKhau.Equals(user.MatKhau)).SingleOrDefault();
+            return View();
+        }
+        public ActionResult DangNhap(tCustumer user)
+        {
+            var user2 = db.tCustumers.Where(n => n.TaiKhoan.Equals(user.TaiKhoan) && n.MatKhau.Equals(user.MatKhau)).SingleOrDefault();
             if (user2 == null)
             {
                 ViewBag.message = "Sai ten nguoi dung hoac mat khau";
@@ -38,11 +42,11 @@ namespace WebBanVali.Controllers
         }
         [HttpPost]
 
-        public ActionResult Dangky(tMembership taikhoan1)
+        public ActionResult Dangky(tCustumer taikhoan1)
         {
             if (ModelState.IsValid)
             {
-                db.tMemberships.Add(taikhoan1);
+                db.tCustumers.Add(taikhoan1);
                 db.SaveChanges();
                 return View("Index");
             }
@@ -50,8 +54,10 @@ namespace WebBanVali.Controllers
         }
         public ActionResult Logout()
         {
+            Console.WriteLine(Session.ToString());
             Session.Clear();//remove session
-            return RedirectToAction("Index");
+            Console.WriteLine(Session.ToString());
+            return RedirectToAction("Index", "Home");
         }
     }
 }

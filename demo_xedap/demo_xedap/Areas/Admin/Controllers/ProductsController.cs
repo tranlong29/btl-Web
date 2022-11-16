@@ -1,4 +1,5 @@
-﻿using demo_xedap.Models;
+﻿
+using demo_xedap.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,7 +12,7 @@ namespace demo_xedap.Areas.Admin.Controllers
 {
     public class ProductsController : Controller
     {
-        DBWebBanXeDap1Entities _db = new DBWebBanXeDap1Entities();
+        DBWebBanXeDap1Entities1 _db = new DBWebBanXeDap1Entities1();
         // GET: Admin/Products
 
         public ActionResult Index()

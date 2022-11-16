@@ -28,6 +28,8 @@
           <Property Name="Phone" Type="nvarchar" MaxLength="50" />
           <Property Name="Address" Type="nvarchar" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="TaiKhoan" Type="nvarchar" MaxLength="50" />
+          <Property Name="MatKhau" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tMembership">
           <Key>
@@ -38,8 +40,6 @@
           <Property Name="SDT" Type="nvarchar" MaxLength="50" />
           <Property Name="Address" Type="nvarchar" MaxLength="50" />
           <Property Name="GioiTinh" Type="nvarchar" MaxLength="20" />
-          <Property Name="TaiKhoan" Type="nvarchar" MaxLength="50" />
-          <Property Name="MatKhau" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tOrder">
           <Key>
@@ -287,6 +287,8 @@
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TaiKhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tOrders" Relationship="Self.FK_tOrder_tCustumers" FromRole="tCustumers" ToRole="tOrder" />
         </EntityType>
         <EntityType Name="tMembership">
@@ -298,8 +300,6 @@
           <Property Name="SDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="GioiTinh" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="TaiKhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tOrders" Relationship="Self.FK_tOrder_tMembership" FromRole="tMembership" ToRole="tOrder" />
         </EntityType>
         <EntityType Name="tOrder">
@@ -484,7 +484,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DBWebBanXeDap1Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DBWebBanXeDap1Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tCategories" EntityType="Self.tCategory" />
           <EntitySet Name="tCountries" EntityType="Self.tCountry" />
           <EntitySet Name="tCustumers" EntityType="Self.tCustumer" />
@@ -537,7 +537,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DBWebBanXeDap1ModelStoreContainer" CdmEntityContainer="DBWebBanXeDap1Entities">
+        <EntityContainerMapping StorageEntityContainer="DBWebBanXeDap1ModelStoreContainer" CdmEntityContainer="DBWebBanXeDap1Entities1">
           <EntitySetMapping Name="tCategories">
             <EntityTypeMapping TypeName="DBWebBanXeDap1Model.tCategory">
               <MappingFragment StoreEntitySet="tCategory">
@@ -562,6 +562,8 @@
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -573,8 +575,6 @@
                 <ScalarProperty Name="SDT" ColumnName="SDT" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
-                <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
-                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

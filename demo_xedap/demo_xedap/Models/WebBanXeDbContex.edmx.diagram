@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d1ef0bca932143828ff3ccc119a531d4" Name="Diagram1">
+      <Diagram DiagramId="c94937c0734c4f439f989981736b8822" Name="Diagram1">
         <EntityTypeShape EntityType="DBWebBanXeDap1Model.tCategory" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBWebBanXeDap1Model.tCountry" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="DBWebBanXeDap1Model.tCustumer" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBWebBanXeDap1Model.tMembership" Width="1.5" PointX="0.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBWebBanXeDap1Model.tMembership" Width="1.5" PointX="0.75" PointY="17.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DBWebBanXeDap1Model.tOrder" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DBWebBanXeDap1Model.tOrder_detall" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DBWebBanXeDap1Model.tProduct" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
