@@ -25,7 +25,6 @@ namespace demo_xedap.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<tCategory> tCategories { get; set; }
         public virtual DbSet<tCountry> tCountries { get; set; }
         public virtual DbSet<tCustumer> tCustumers { get; set; }

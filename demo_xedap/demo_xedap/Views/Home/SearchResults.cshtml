@@ -1,9 +1,8 @@
 ﻿
 @{
-    ViewBag.Title = "CategoryPage";
+    ViewBag.Title = "SearchResults";
     Layout = "~/Views/Shared/_Layoutdetail.cshtml";
 }
-
 
 @using demo_xedap.Models;
 @using PagedList.Mvc;
@@ -20,7 +19,7 @@
                             <span class="lnr lnr-arrow-right"></span>Loại Xe Đạp<span class="number">(53)</span>
                         </a>
                         <ul class="collapse" id="fruitsVegetable" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
-                            @Html.Action("ListCategoryPartial", "Home")
+                            @Html.Action("CategoryPartial", "Home")
                         </ul>
                     </li>
 
@@ -29,7 +28,12 @@
                             <span class="lnr lnr-arrow-right"></span>Màu xe đạp<span class="number">(53)</span>
                         </a>
                         <ul class="collapse" id="meatFish" data-toggle="collapse" aria-expanded="false" aria-controls="meatFish">
-                            @Html.Action("ColorPartial", "Home")
+                            @{
+                                foreach (var color in Model)
+                                {
+                                    <li class="main-nav-list child"><a href="#">@color.Color<span class="number">(13)</span></a></li>
+                                }
+                            }
                         </ul>
                     </li>
                     <li class="main-nav-list">
@@ -37,7 +41,11 @@
                             <span class="lnr lnr-arrow-right"></span>Hãng Sản Xuất<span class="number">(53)</span>
                         </a>
                         <ul class="collapse" id="cooking" data-toggle="collapse" aria-expanded="false" aria-controls="cooking">
-                            @Html.Action("SupplierPartial", "Home")
+                            <li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
+                            <li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
+                            <li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
+                            <li class="main-nav-list child"><a href="#">Meat Alternatives<span class="number">(01)</span></a></li>
+                            <li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
                         </ul>
                     </li>
                     <li class="main-nav-list">
@@ -45,7 +53,11 @@
                             <span class="lnr lnr-arrow-right"></span>Chất Liệu<span class="number">(24)</span>
                         </a>
                         <ul class="collapse" id="beverages" data-toggle="collapse" aria-expanded="false" aria-controls="beverages">
-                            @Html.Action("SubstancePartial", "Home")
+                            <li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
+                            <li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
+                            <li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
+                            <li class="main-nav-list child"><a href="#">Meat Alternatives<span class="number">(01)</span></a></li>
+                            <li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
                         </ul>
                     </li>
                     <li class="main-nav-list">
@@ -53,7 +65,11 @@
                             <span class="lnr lnr-arrow-right"></span>Nước Sản Xuất<span class="number">(53)</span>
                         </a>
                         <ul class="collapse" id="homeClean" data-toggle="collapse" aria-expanded="false" aria-controls="homeClean">
-                            @Html.Action("CountryPartial", "Home")
+                            <li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
+                            <li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
+                            <li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
+                            <li class="main-nav-list child"><a href="#">Meat Alternatives<span class="number">(01)</span></a></li>
+                            <li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
                         </ul>
                     </li>
                 </ul>
@@ -129,74 +145,75 @@
                 </div>
                 <div class="pagination">
                     @Html.PagedListPager(Model, page => Url.Action("CategoryPage", new { page = page }))
-
                 </div>
-             </div>
-                <!-- End Filter Bar -->
-                <!-- Start Best Seller -->
-                <section class="lattest-product-area pb-40 category-list">
-                    <div class="row">
-                        <!-- single product -->
-                        @{
-                            int i = 0;
-                            foreach (var item in Model)
-                            {
-                                i++;
+            </div>
+            <!-- End Filter Bar -->
+            <!-- Start Best Seller -->
+            <section class="lattest-product-area pb-40 category-list">
+                <h6>@ViewBag.ThongBao</h6>
+                <div class="row">
+                    <!-- single product -->
+                    @{
+                        int i = 0;
+                        foreach (var item in Model)
+                        {
+                            i++;
 
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="single-product">
-                                        <img class="img-fluid" style="height: 30vh" src="@Url.Content("~/layoutAssets/Images/" + item.Anh)" alt="">
-                                        <div class="product-details">
-                                            <h6>
-                                                @item.ProducName
-                                            </h6>
-                                            <div class="price">
-                                                <h6>$@item.Price</h6>
-                                                @*<h6 class="l-through">$210.00</h6>*@
-                                            </div>
-                                            <div class="prd-bottom">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single-product">
+                                    <img class="img-fluid" style="height: 30vh" src="@Url.Content("~/layoutAssets/Images/" + item.Anh)" alt="">
+                                    <div class="product-details">
+                                        <h6>
+                                            @item.ProducName
+                                        </h6>
+                                        <div class="price">
+                                            <h6>$@item.Price</h6>
+                                            @*<h6 class="l-through">$210.00</h6>*@
+                                        </div>
+                                        <div class="prd-bottom">
 
-                                                <a href="" class="social-info">
-                                                    <span class="ti-bag"></span>
-                                                    <p class="hover-text">add to bag</p>
-                                                </a>
-                                                <a href="" class="social-info">
-                                                    <span class="lnr lnr-heart"></span>
-                                                    <p class="hover-text">Wishlist</p>
-                                                </a>
-                                                <a href="" class="social-info">
-                                                    <span class="lnr lnr-sync"></span>
-                                                    <p class="hover-text">compare</p>
-                                                </a>
-                                                <a href="" class="social-info">
-                                                    <span class="lnr lnr-move"></span>
-                                                    <p class="hover-text">view more</p>
-                                                </a>
-                                            </div>
+                                            <a href="" class="social-info">
+                                                <span class="ti-bag"></span>
+                                                <p class="hover-text">add to bag</p>
+                                            </a>
+                                            <a href="" class="social-info">
+                                                <span class="lnr lnr-heart"></span>
+                                                <p class="hover-text">Wishlist</p>
+                                            </a>
+                                            <a href="" class="social-info">
+                                                <span class="lnr lnr-sync"></span>
+                                                <p class="hover-text">compare</p>
+                                            </a>
+                                            <a href="" class="social-info">
+                                                <span class="lnr lnr-move"></span>
+                                                <p class="hover-text">view more</p>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
-                            }
+                            </div>
                         }
+                    }
 
-                    </div>
-                </section>
-                <!-- End Best Seller -->
-                <!-- Start Filter Bar -->
-                <div class="filter-bar d-flex flex-wrap align-items-center">
-                    <div class="sorting mr-auto">
-                        <select>
-                            <option value="1">Show 12</option>
-                            <option value="1">Show 12</option>
-                            <option value="1">Show 12</option>
-                        </select>
-                    </div>
-                    <div class="pagination">
-                        @Html.PagedListPager(Model, page => Url.Action("CategoryPage", new { page = page }))
-                    </div>
                 </div>
-                <!-- End Filter Bar -->
+            </section>
+            <!-- End Best Seller -->
+            <!-- Start Filter Bar -->
+            <div class="filter-bar d-flex flex-wrap align-items-center">
+                <div class="sorting mr-auto">
+                    <select>
+                        <option value="1">Show 12</option>
+                        <option value="1">Show 12</option>
+                        <option value="1">Show 12</option>
+                    </select>
+                </div>
+                <div class="pagination">
+                    @Html.PagedListPager(Model, page => Url.Action("SearchResults", new { page = page, searchkey = ViewBag.searchkey }))
+                
+                </div>
             </div>
+            <!-- End Filter Bar -->
+        </div>
     </div>
 </div>
 

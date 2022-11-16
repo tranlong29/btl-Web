@@ -136,57 +136,55 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\BanXeDbContext.Context.cs">
+    <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BanXeDbContext.Context.tt</DependentUpon>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BanXeDbContext.cs">
+    <Compile Include="Models\Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BanXeDbContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BanXeDbContext.Designer.cs">
+    <Compile Include="Models\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BanXeDbContext.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>BanXeDbContext.tt</DependentUpon>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\tCategory.cs">
-      <DependentUpon>BanXeDbContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tCountry.cs">
-      <DependentUpon>BanXeDbContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tCustumer.cs">
-      <DependentUpon>BanXeDbContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tMembership.cs">
-      <DependentUpon>BanXeDbContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tOrder.cs">
-      <DependentUpon>BanXeDbContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tOrder_detall.cs">
-      <DependentUpon>BanXeDbContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tProduct.cs">
-      <DependentUpon>BanXeDbContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tProduct_Img.cs">
-      <DependentUpon>BanXeDbContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tSubstance.cs">
-      <DependentUpon>BanXeDbContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tSupplier.cs">
-      <DependentUpon>BanXeDbContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -452,15 +450,15 @@
     <Content Include="layoutAssets\js\vendor\bootstrap.min.js" />
     <Content Include="layoutAssets\js\vendor\jquery-2.2.4.min.js" />
     <Content Include="layoutAssets\js\vendor\popper.js" />
-    <Content Include="Models\BanXeDbContext.Context.tt">
+    <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BanXeDbContext.edmx</DependentUpon>
-      <LastGenOutput>BanXeDbContext.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\BanXeDbContext.tt">
+    <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BanXeDbContext.edmx</DependentUpon>
-      <LastGenOutput>BanXeDbContext.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -498,12 +496,12 @@
     <Content Include="layoutAssets\scss\theme\_product.scss" />
     <Content Include="layoutAssets\scss\theme\_reset.scss" />
     <Content Include="layoutAssets\scss\theme\_variables.scss" />
-    <EntityDeploy Include="Models\BanXeDbContext.edmx">
+    <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BanXeDbContext.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\BanXeDbContext.edmx.diagram">
-      <DependentUpon>BanXeDbContext.edmx</DependentUpon>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -533,6 +531,21 @@
     <Content Include="Views\Home\DetailPage.cshtml" />
     <Content Include="Views\Home\CategoryPage.cshtml" />
     <Content Include="Views\Home\CategoryPartial.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Home\SearchResults.cshtml" />
+    <Content Include="Views\Shared\_PartialHeader.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Home\ListCategoryPartial.cshtml" />
+    <Content Include="Views\Home\ProductsByListCategory.cshtml" />
+    <Content Include="Views\Home\SubstancePartial.cshtml" />
+    <Content Include="Views\Home\ProductsBySubstance.cshtml" />
+    <Content Include="Views\Home\CountryPartial.cshtml" />
+    <Content Include="Views\Home\ProductsByCountry.cshtml" />
+    <Content Include="Views\Home\ColorPartial.cshtml" />
+    <Content Include="Views\Home\ProductsByColor.cshtml" />
+    <Content Include="Views\Home\SupplierPartial.cshtml" />
+    <Content Include="Views\Home\ProductsBySupplier.cshtml" />
+    <Content Include="Views\Login\Dangky.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

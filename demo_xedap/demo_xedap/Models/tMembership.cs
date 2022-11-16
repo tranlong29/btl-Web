@@ -25,6 +25,8 @@ namespace demo_xedap.Models
         public string SDT { get; set; }
         public string Address { get; set; }
         public string GioiTinh { get; set; }
+        public string TaiKhoan { get; set; }
+        public string MatKhau { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tOrder> tOrders { get; set; }
