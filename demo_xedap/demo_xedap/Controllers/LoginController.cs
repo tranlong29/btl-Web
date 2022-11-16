@@ -11,7 +11,7 @@ namespace WebBanVali.Controllers
 {
     public class LoginController : Controller
     {
-        DBWebBanXeDapEntities db = new DBWebBanXeDapEntities();
+        DBWebBanXeDap1Entities db = new DBWebBanXeDap1Entities();
         // GET: Login
         public ActionResult Index()
         {
