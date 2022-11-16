@@ -10,7 +10,7 @@ namespace demo_xedap.Controllers
 {
     public class HomeController : Controller
     {
-        DBWebBanXeDap1Entities1 _db = new DBWebBanXeDap1Entities1();
+        DBWebBanXeDap1Entities _db = new DBWebBanXeDap1Entities();
         public ActionResult Index()
         {
             List<tProduct> lstProduct = _db.tProducts.ToList();

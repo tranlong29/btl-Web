@@ -12,7 +12,7 @@ namespace demo_xedap.Areas.Admin.Controllers
 {
     public class ProductsController : Controller
     {
-        DBWebBanXeDap1Entities1 _db = new DBWebBanXeDap1Entities1();
+        DBWebBanXeDap1Entities _db = new DBWebBanXeDap1Entities();
         // GET: Admin/Products
 
         public ActionResult Index()
