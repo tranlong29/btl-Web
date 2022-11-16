@@ -1,0 +1,7 @@
+﻿@using demo_xedap.Models;
+@model List<tCategory>
+
+@foreach (var item in Model)
+{
+    <li><a href="@Url.Action("ProductsByListCategory", "Home", new { @MaLoai = item.MaLoai })">@item.TenLoai</li>
+}

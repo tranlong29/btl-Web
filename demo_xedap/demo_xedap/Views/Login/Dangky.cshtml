@@ -1,4 +1,4 @@
-﻿@model demo_xedap.Models.tMembership
+﻿@model demo_xedap.Models.tCustumer
 
 @{
     ViewBag.Title = "Dangky";
@@ -6,56 +6,48 @@
 }
 
 
-
-@using (Html.BeginForm())
+<h3>Register to enter</h3>
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h3>Register</h3>
-
+    
+    <div class="form-horizontal">  
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.MemberID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-12">
-                @Html.EditorFor(model => model.MemberID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MemberID, "", new { @class = "text-danger" })
+        <div class="form-group" style="text-align: center;">
+            @*@Html.LabelFor(model => model.CustumerID, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-8" style="display: inline-block;">
+                <input type="text" class="form-control" placeholder="ID" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ID'" 
+                 @Html.EditorFor(model => model.CustumerID, new { htmlAttributes = new { @class = "form-control" } })
+                 @Html.ValidationMessageFor(model => model.CustumerID, "", new { @class = "text-danger" })
+
+                
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-12">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.TaiKhoan, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-12">
+        <div class="form-group" style="text-align: center;">
+            @*@Html.LabelFor(model => model.TaiKhoan, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-8" style="display: inline-block;">
+                <input type="text" class="form-control" placeholder="Account" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Account'"
                 @Html.EditorFor(model => model.TaiKhoan, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TaiKhoan, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MatKhau, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-12">
-                @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+        <div class="form-group" style="text-align: center;">
+            @*@Html.LabelFor(model => model.MatKhau, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-8" style="display: inline-block;">
+                <input type="text" class="form-control" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'"
+                       @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
+                       @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="primary-btn" />@Html.ActionLink("Back to List", "Index")
+        <div class="form-group" style="text-align: center;">
+            <div class="col-md-offset-2 col-md-10" style="display: inline-block;">
+                <input type="submit" value="Create" class="primary-btn" />&nbsp;&nbsp;&nbsp;
+                @Html.ActionLink("Back to List", "Index")
             </div>
         </div>
     </div>
 }
-
-
-
 
 

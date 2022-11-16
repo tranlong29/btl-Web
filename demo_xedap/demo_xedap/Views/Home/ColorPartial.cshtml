@@ -1,0 +1,6 @@
+﻿@using demo_xedap.Models
+@model List<tProduct>
+@foreach (var item in Model)
+{
+    <li><a href="@Url.Action("ProductsByColor", "Home", new { @Color = item.Color })">@item.Color</li>
+}

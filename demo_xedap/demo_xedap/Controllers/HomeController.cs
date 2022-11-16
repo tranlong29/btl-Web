@@ -48,19 +48,96 @@ namespace demo_xedap.Controllers
             List<tCategory> lstCategorys = _db.tCategories.ToList();
             return PartialView(lstCategorys);
         }
-        
+        public PartialViewResult ListCategoryPartial()
+        {
+            return PartialView(_db.tCategories.ToList());
+        }
+        public ActionResult ProductsByListCategory(int? page, string MaLoai = "vali")
+        {
+            List<tProduct> lstProducts = _db.tProducts.Where(n => n.MaLoai == MaLoai).OrderBy(n => n.MaLoai).ToList();
+            if (lstProducts.Count == 0)
+            {
+                ViewBag.Products = "Khong co san pham nay";
+                ViewBag.lstProducts = _db.tProducts.ToList();
+            }
+            int pagesize = 12;  //số sản phẩm trên một trang
+            int pagenumber = (page ?? 1); //số trang
+
+            return View(lstProducts.ToPagedList(pagenumber, pagesize));
+        }
         public PartialViewResult SubstancePartial()
         {
             List<tSubstance> lstSubstances = _db.tSubstances.ToList();
             return PartialView(lstSubstances);
+        }
+        public ActionResult ProductsBySubstance(int? page, string MaChatLieu = "")
+        {
+            List<tProduct> lstProducts = _db.tProducts.Where(n => n.MaChatLieu == MaChatLieu).OrderBy(n => n.MaChatLieu).ToList();
+            if (lstProducts.Count == 0)
+            {
+                ViewBag.Products = "Khong co san pham nay";
+                ViewBag.lstProducts = _db.tProducts.ToList();
+            }
+            int pagesize = 12;  //số sản phẩm trên một trang
+            int pagenumber = (page ?? 1); //số trang
+
+            return View(lstProducts.ToPagedList(pagenumber, pagesize));
         }
         public PartialViewResult CountryPartial()
         {
             List<tCountry> lstCountrys = _db.tCountries.ToList();
             return PartialView(lstCountrys);
         }
+        public ActionResult ProductsByCountry(int? page, string MaNuoc = "")
+        {
+            List<tProduct> lstProducts = _db.tProducts.Where(n => n.MaNuoc == MaNuoc).OrderBy(n => n.MaNuoc).ToList();
+            if (lstProducts.Count == 0)
+            {
+                ViewBag.Products = "Khong co san pham nay";
+                ViewBag.lstProducts = _db.tProducts.ToList();
+            }
+            int pagesize = 12;  //số sản phẩm trên một trang
+            int pagenumber = (page ?? 1); //số trang
 
-        [HttpGet]
+            return View(lstProducts.ToPagedList(pagenumber, pagesize));
+        }
+        public PartialViewResult ColorPartial()
+        {
+            return PartialView(_db.tProducts.ToList());
+
+        }
+        public ActionResult ProductsByColor(int? page, string Color = "")
+        {
+            List<tProduct> lstProducts = _db.tProducts.Where(n => n.Color == Color).OrderBy(n => n.Color).ToList();
+            if (lstProducts.Count == 0)
+            {
+                ViewBag.Products = "Khong co san pham nay";
+                ViewBag.lstProducts = _db.tProducts.ToList();
+            }
+            int pagesize = 12;  //số sản phẩm trên một trang
+            int pagenumber = (page ?? 1); //số trang
+
+            return View(lstProducts.ToPagedList(pagenumber, pagesize));
+        }
+
+        public PartialViewResult SupplierPartial()
+        {
+            return PartialView(_db.tSuppliers.ToList());
+
+        }
+        public ActionResult ProductsBySupplier(int? page, string MaNSX = "")
+        {
+            List<tProduct> lstProducts = _db.tProducts.Where(n => n.MaNSX == MaNSX).OrderBy(n => n.MaNSX).ToList();
+            if (lstProducts.Count == 0)
+            {
+                ViewBag.Products = "Khong co san pham nay";
+                ViewBag.lstProducts = _db.tProducts.ToList();
+            }
+            int pagesize = 12;  //số sản phẩm trên một trang
+            int pagenumber = (page ?? 1); //số trang
+
+            return View(lstProducts.ToPagedList(pagenumber, pagesize));
+        }        
         public ActionResult SearchResults(string searchkey, int? page)
         {
             ViewBag.searchkey = searchkey;
@@ -70,11 +147,11 @@ namespace demo_xedap.Controllers
             List<tProduct> lstProducts = _db.tProducts.ToList();
             if (lstSearchResults.Count == 0)
             {
-                ViewBag.ThongBao = "Khong tim thay san pham";
+                ViewBag.ThongBao = "No products found";
                 return View(_db.tProducts.ToList().ToPagedList(pagenumber, pagesize));
             }
-            ViewBag.ThongBao = "da tim thay " + lstSearchResults.Count.ToString() + " san pham";
+            ViewBag.ThongBao = "Found" + lstSearchResults.Count.ToString() + " products";
             return View(lstSearchResults.OrderBy(n => n.ProducName).ToPagedList(pagenumber, pagesize));
-        }
+        }       
     }
 }

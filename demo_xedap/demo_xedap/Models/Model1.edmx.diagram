@@ -4,27 +4,26 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="af51c50a97654c27881bc0af272e09b4" Name="Diagram1">
-        <EntityTypeShape EntityType="WebBanXeDapModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebBanXeDapModel.tCategory" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebBanXeDapModel.tCountry" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebBanXeDapModel.tCustumer" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebBanXeDapModel.tMembership" Width="1.5" PointX="0.75" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebBanXeDapModel.tOrder" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebBanXeDapModel.tOrder_detall" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebBanXeDapModel.tProduct" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebBanXeDapModel.tProduct_Img" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebBanXeDapModel.tSubstance" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebBanXeDapModel.tSupplier" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
-        <AssociationConnector Association="WebBanXeDapModel.FK_tProduct_tCategory" ManuallyRouted="false" />
-        <AssociationConnector Association="WebBanXeDapModel.FK_tProduct_tCountry" ManuallyRouted="false" />
-        <AssociationConnector Association="WebBanXeDapModel.FK_tOrder_tCustumers" ManuallyRouted="false" />
-        <AssociationConnector Association="WebBanXeDapModel.FK_tOrder_tMembership" ManuallyRouted="false" />
-        <AssociationConnector Association="WebBanXeDapModel.FK_tOrder_detall_tOrder" ManuallyRouted="false" />
-        <AssociationConnector Association="WebBanXeDapModel.FK_tOrder_detall_tProduct" ManuallyRouted="false" />
-        <AssociationConnector Association="WebBanXeDapModel.FK_tProduct_Img_tProDuct" ManuallyRouted="false" />
-        <AssociationConnector Association="WebBanXeDapModel.FK_tProduct_tSubstance" ManuallyRouted="false" />
-        <AssociationConnector Association="WebBanXeDapModel.FK_tProduct_tSuppliers" ManuallyRouted="false" />
+      <Diagram DiagramId="a1d24ae9a4554bb28069a81a420f18e6" Name="Diagram1">
+        <EntityTypeShape EntityType="DBWebBanXeDap2Model.tCategory" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBWebBanXeDap2Model.tCountry" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBWebBanXeDap2Model.tCustumer" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBWebBanXeDap2Model.tMembership" Width="1.5" PointX="0.75" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBWebBanXeDap2Model.tOrder" Width="1.5" PointX="3" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBWebBanXeDap2Model.tOrder_detall" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBWebBanXeDap2Model.tProduct" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBWebBanXeDap2Model.tProduct_Img" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBWebBanXeDap2Model.tSubstance" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBWebBanXeDap2Model.tSupplier" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <AssociationConnector Association="DBWebBanXeDap2Model.FK_tProduct_tCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="DBWebBanXeDap2Model.FK_tProduct_tCountry" ManuallyRouted="false" />
+        <AssociationConnector Association="DBWebBanXeDap2Model.FK_tOrder_tCustumers" ManuallyRouted="false" />
+        <AssociationConnector Association="DBWebBanXeDap2Model.FK_tOrder_tMembership" ManuallyRouted="false" />
+        <AssociationConnector Association="DBWebBanXeDap2Model.FK_tOrder_detall_tOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="DBWebBanXeDap2Model.FK_tOrder_detall_tProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="DBWebBanXeDap2Model.FK_tProduct_Img_tProDuct" ManuallyRouted="false" />
+        <AssociationConnector Association="DBWebBanXeDap2Model.FK_tProduct_tSubstance" ManuallyRouted="false" />
+        <AssociationConnector Association="DBWebBanXeDap2Model.FK_tProduct_tSuppliers" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
