@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBWebBanXeDap1ModelStoreContainer" CdmEntityContainer="DBWebBanXeDap1Entities1">
+    <EntitySetMapping Name="tCategories">
+      <EntityTypeMapping TypeName="DBWebBanXeDap1Model.tCategory">
+        <MappingFragment StoreEntitySet="tCategory">
+          <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+          <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tCountries">
+      <EntityTypeMapping TypeName="DBWebBanXeDap1Model.tCountry">
+        <MappingFragment StoreEntitySet="tCountry">
+          <ScalarProperty Name="MaNuoc" ColumnName="MaNuoc" />
+          <ScalarProperty Name="TenNuoc" ColumnName="TenNuoc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tCustumers">
+      <EntityTypeMapping TypeName="DBWebBanXeDap1Model.tCustumer">
+        <MappingFragment StoreEntitySet="tCustumers">
+          <ScalarProperty Name="CustumerID" ColumnName="CustumerID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tMemberships">
+      <EntityTypeMapping TypeName="DBWebBanXeDap1Model.tMembership">
+        <MappingFragment StoreEntitySet="tMembership">
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tOrders">
+      <EntityTypeMapping TypeName="DBWebBanXeDap1Model.tOrder">
+        <MappingFragment StoreEntitySet="tOrder">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="CustumerID" ColumnName="CustumerID" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="NgayBan" ColumnName="NgayBan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tOrder_detall">
+      <EntityTypeMapping TypeName="DBWebBanXeDap1Model.tOrder_detall">
+        <MappingFragment StoreEntitySet="tOrder_detall">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Prices" ColumnName="Prices" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tProducts">
+      <EntityTypeMapping TypeName="DBWebBanXeDap1Model.tProduct">
+        <MappingFragment StoreEntitySet="tProduct">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ProducName" ColumnName="ProducName" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+          <ScalarProperty Name="MaChatLieu" ColumnName="MaChatLieu" />
+          <ScalarProperty Name="MaNSX" ColumnName="MaNSX" />
+          <ScalarProperty Name="MaAnh" ColumnName="MaAnh" />
+          <ScalarProperty Name="GioiThieu" ColumnName="GioiThieu" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="BaoHanh" ColumnName="BaoHanh" />
+          <ScalarProperty Name="MaNuoc" ColumnName="MaNuoc" />
+          <ScalarProperty Name="Anh" ColumnName="Anh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tProduct_Img">
+      <EntityTypeMapping TypeName="DBWebBanXeDap1Model.tProduct_Img">
+        <MappingFragment StoreEntitySet="tProduct_Img">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="TenFileAnh" ColumnName="TenFileAnh" />
+          <ScalarProperty Name="ViTri" ColumnName="ViTri" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tSubstances">
+      <EntityTypeMapping TypeName="DBWebBanXeDap1Model.tSubstance">
+        <MappingFragment StoreEntitySet="tSubstance">
+          <ScalarProperty Name="MaChatLieu" ColumnName="MaChatLieu" />
+          <ScalarProperty Name="ChatLieu" ColumnName="ChatLieu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tSuppliers">
+      <EntityTypeMapping TypeName="DBWebBanXeDap1Model.tSupplier">
+        <MappingFragment StoreEntitySet="tSuppliers">
+          <ScalarProperty Name="MaNSX" ColumnName="MaNSX" />
+          <ScalarProperty Name="TenNSX" ColumnName="TenNSX" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
